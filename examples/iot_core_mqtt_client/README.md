@@ -20,5 +20,5 @@ make
 <pre>
 make \
 cd bin \
-./iot_core_mqtt_client -i <i><b>HOST_IP</b></i> -p <i><b>SUBSCRIPTION_ID</b></i> -d subscriptions/<i><b>SUBSCRIPTION_ID</b><b></i>/registries/<i><b>REGISTRY_ID</b></i>/devices/<i><b>DEVICE_ID</b></i> -t /devices/<i><b>DEVICE_ID</b></i>/state
+./iot_core_mqtt_client -i <i><b>HOST_IP</b></i> -p <i><b>SUBSCRIPTION_ID</b></i> -d <b>subscriptions/<i><b>SUBSCRIPTION_ID</b><b></i>/registries/<i><b>REGISTRY_ID</b></i>/devices/<i><b>DEVICE_ID</b></i> -t /devices/<i><b>DEVICE_ID</b></i>/state
 </pre>
