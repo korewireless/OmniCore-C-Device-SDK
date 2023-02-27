@@ -1,4 +1,7 @@
 # Omnicore Device SDK for Embedded C
+Note:Ported From GCP Iot Core Embedded C SDK [GCP IoT
+Device SDK for Embedded C GitHub
+repository](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c)
 
 The Omnicore Device SDK for Embedded C is an easy-to-port, open-source C library that connects low-end IoT devices to  Omnicore.
 
