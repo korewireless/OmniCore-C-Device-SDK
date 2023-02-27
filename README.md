@@ -121,11 +121,6 @@ The Device SDK supports other TLS libraries through the BSP TLS API. For informa
 
 
 
-## Contributing
-
-For information about contributing to this repository, see
-[`CONTRIBUTING.md`](CONTRIBUTING.md).
-
 ## Learn more
 
 Review the following documentation:
