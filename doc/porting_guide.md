@@ -1,6 +1,6 @@
-# Google Cloud IoT Device SDK for Embedded C Porting Guide
+# Omnicore SDK for Embedded C Porting Guide
 
-##### Copyright 2018-2020 Google LLC
+##### Copyright 2023 KoreWireless
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -10,13 +10,13 @@
 
 # Introduction
 
-To run the Google Cloud IoT Device SDK for Embedded C on new platforms, first read the [Building](#building) section to adapt the `make` environment to your toolchain. Then, review the [Porting](#porting) section to customize the Board Support Package (BSP) for the target device.
+To run the Omnicore IoT Device SDK for Embedded C on new platforms, first read the [Building](#building) section to adapt the `make` environment to your toolchain. Then, review the [Porting](#porting) section to customize the Board Support Package (BSP) for the target device.
 
 ## Before you begin
-Before you port the Device SDK to a new platform, review the `README.md` in the root directory of this repository and be familar with the [default build process](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c#building).
+Before you port the Device SDK to a new platform, review the `README.md` in the root directory of this repository and be familar with the [default build process](https://github.com/korewireless/Omnicore-C-Device-SDK#building).
 
 ## Audience and scope
-This document is for embedded device developers who want to run the [Device SDK](https://github.com/googlecloudplatform/iot-device-sdk-embedded-c) on their custom device.
+This document is for embedded device developers who want to run the [Device SDK](https://github.com/korewireless/Omnicore-C-Device-SDK) on their custom device.
 
 This document provides details of the Device SDK's build steps, build configuration flags, and the location of the functions needed to port the SDK to new platforms.
 
@@ -131,13 +131,13 @@ The file system flag is for reading public root CAs for service authentication d
                          caps on the available amount of memory. Additionally,
                          a memory monitor tracks memory leaks while testing.  If [`posix_platform`](#platform-selector-flags) is defined, then the Device SDK also logs a stack trace of the initial allocation.
    - `mqtt_localhost`    - Instructs the Device SDK's MQTT client to connect
-                         to a localhost MQTT server instead of the [Cloud IoT Core MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge).
+                         to a localhost MQTT server instead of the [Cloud IoT Core MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge).
    - `no_certverify`     - Disables TLS certificate verification of the
                          service's identifying cert to reduce security. For development purposes only.
    - `tls_bsp`           - Instructs the Device SDK's MQTT client to use
                          third-party TLS 1.2 implementations to encrypt data before sending it over network sockets.
    - `tls_socket`        - Counterpart of `tls_bsp`. Prevents the MQTT client
-                         from including a TLS layer that invokes a TLS BSP. This increases network security. Note that the [Cloud IoT Core MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge) will not accept connections without TLS.
+                         from including a TLS layer that invokes a TLS BSP. This increases network security. Note that the [Cloud IoT Core MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge) will not accept connections without TLS.
 
 #### Platform selector flag
 
@@ -154,11 +154,10 @@ For more information about threadsafe callback support, see the user guide in `d
 
 Application binaries and sources are in the `examples/` directory.
 
-These examples use the Device SDK to connect to Cloud IoT Core, subscribe to Cloud Pub/Sub topics, publish information to Cloud IoT Core, and receive data from Cloud IoT Core.
+These examples use the Device SDK to connect to Omnicore IoT Core, subscribe to Cloud Pub/Sub topics, publish information to Cloud IoT Core, and receive data from Cloud IoT Core.
 
-The examples' source code shows you how to initialize and use the Device SDK's C API.  For more information about the C API, consult the comments in the [example code](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/examples), [`README.md`](../README.md), [`doc/user_guide.md`](user_guide.md), and the [API reference](https://googlecloudplatform.github.io/iot-device-sdk-embedded-c/api/html/index.html).
-
-To build the examples follow the [instructions in the main `README.md`](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/#building-the-examples).
+The examples' source code shows you how to initialize and use the Device SDK's C API.  For more information about the C API, consult the comments in the [example code](https://github.com/korewireless/Omnicore-C-Device-SDK/examples), [`README.md`](../README.md), [`doc/user_guide.md`](user_guide.md).
+To build the examples follow the [instructions in the main `README.md`](https://github.com/korewireless/Omnicore-C-Device-SDK/#building-the-examples).
 
 # Porting
 
@@ -170,7 +169,6 @@ The Board Support Package (BSP) is the well-defined set of functions that the De
 
 The BSP implementation is in the `src/bsp` directory. When porting the Device SDK to your platform SDK, ignore the MQTT codec and the non-blocking/asynchronous engine that appear elsewhere in the source.
 
-BSP function declarations are in the `include/bsp` directory. For generated function documentation, see the Device SDK [BSP reference](https://googlecloudplatform.github.io/iot-device-sdk-embedded-c/bsp/html/index.html).
 
 BSP functions are organized into logical subsystems as follows.
 
@@ -236,7 +234,7 @@ The existing platform config files `make/mt-os/mt-linux.mk` and `make/mt-os/mt-o
 
           include make/mt-os/mt-os-common.mk
 
-   - Define CC and AR. Provide the full path to your toolchain's compiler and archiver executables. For example, the following definitions are for a [FreeRTOS](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/tree/development/examples/freertos_linux/Linux_gcc_gcp_iot) build.
+   - Define CC and AR. Provide the full path to your toolchain's compiler and archiver executables. For example, the following definitions are for a [FreeRTOS](https://github.com/korewireless/Omnicore-C-Device-SDK/tree/development/examples/freertos_linux/Linux_gcc_gcp_iot) build.
 
            CC = ~/downloads/FreeRTOS_sdk/FreeRTOS_tools/bin/armcl
            AR = ~/downloads/FreeRTOS_sdk/tools/bin/armar
@@ -353,12 +351,9 @@ make PRESET=<i><b>NEW_PLATFORM_NAME</b></i> -n
 Then, you can manually run each `make` command in the output to determine the part of the build process that's causing an issue.
 
 # Additional resources
-For more information about the Device SDK, see these other documents in the [GitHub repository](https://github.com/googlecloudplatform/iot-device-sdk-embedded-c):
+For more information about the Device SDK, see these other documents in the [GitHub repository](https://github.com/korewireless/Omnicore-C-Device-SDK):
 
-- [`README.md`](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c) provides general information about the file structure of the source, how to build on Linux, and a general overview of security.
+- [`README.md`](https://github.com/korewireless/Omnicore-C-Device-SDK) provides general information about the file structure of the source, how to build on Linux, and a general overview of security.
 
-- [`doc/user_guide.md`](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/blob/development/doc/user_guide.md) provides an in-depth description of the Device SDK design and features, including MQTT logic, the event system, backoff logic, and platform security requirements.
+- [`doc/user_guide.md`](https://github.com/korewireless/Omnicore-C-Device-SDK/blob/development/doc/user_guide.md) provides an in-depth description of the Device SDK design and features, including MQTT logic, the event system, backoff logic, and platform security requirements.
 
-- [`doc/doxygen/api`](https://googlecloudplatform.github.io/iot-device-sdk-embedded-c/api/html/index.html) contains the function specifications for the Device SDK application-level API.
-
-- [`doc/doxygen/bsp`](https://googlecloudplatform.github.io/iot-device-sdk-embedded-c/bsp/html/index.html) contains the declarations and documentation for the abstracted Board Support Package (BSP) functions to port the Device SDK to new platforms.
