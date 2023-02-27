@@ -39,7 +39,7 @@
 extern iotc_mqtt_qos_t iotc_example_qos;
 
 /* Parameters returned by the parser. These will be in a structure someday. */
-extern const char* iotc_project_id;
+extern const char* iotc_subscription_id;
 extern const char* iotc_host;
 extern const char* iotc_device_path;
 extern const char* iotc_publish_topic;

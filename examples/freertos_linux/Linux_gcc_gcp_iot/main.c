@@ -100,7 +100,7 @@ void task_function_gcpiot_embedded_c(void *parameters)
   char *host = "*.mqtt.korewireless.com";
   size_t bytes_written = 0;
   iotc_state_t state = iotc_create_iotcore_jwt(
-      iotc_project_id,
+      iotc_subscription_id,
       /*jwt_expiration_period_sec=*/3600, &iotc_connect_private_key_data, jwt,
       IOTC_JWT_SIZE, &bytes_written);
 

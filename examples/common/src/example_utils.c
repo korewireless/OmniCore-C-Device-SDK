@@ -65,7 +65,7 @@ int iotc_example_handle_command_line_args(int argc, char *argv[])
 
   /* Check to see that the required parameters were all present on the command
    * line */
-  if (NULL == iotc_project_id)
+  if (NULL == iotc_subscription_id)
   {
     missingparameter = 1;
     printf("-p --project_id is required\n");
@@ -221,7 +221,7 @@ void on_connection_state_changed(iotc_context_handle_t in_context_handle,
          was due to an expired JWT. */
       char jwt[IOTC_JWT_SIZE] = {0};
       size_t bytes_written = 0;
-      state = iotc_create_iotcore_jwt(iotc_project_id,
+      state = iotc_create_iotcore_jwt(iotc_subscription_id,
                                       /*jwt_expiration_period_sec=*/3600,
                                       &iotc_connect_private_key_data, jwt,
                                       IOTC_JWT_SIZE, &bytes_written);

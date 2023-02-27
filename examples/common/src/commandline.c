@@ -52,7 +52,7 @@ iotc_mqtt_qos_t iotc_example_qos = IOTC_EXAMPLE_DEFAULT_QOS;
 
 #define DEFAULT_PRIVATE_KEY_FIILENAME "ec_private.pem"
 const char* iotc_host;
-const char* iotc_project_id;
+const char* iotc_subscription_id;
 const char* iotc_device_path;
 const char* iotc_publish_topic;
 const char* iotc_publish_message;
@@ -62,7 +62,7 @@ int iotc_parse(int argc, char** argv, char* valid_options,
                unsigned options_length) {
   int c;
   int iotc_help_flag = 0;
-  iotc_project_id = NULL;
+  iotc_subscription_id = "";
   iotc_host=NULL;
   iotc_device_path = NULL;
   iotc_publish_topic = NULL;
@@ -72,7 +72,7 @@ int iotc_parse(int argc, char** argv, char* valid_options,
   while (1) {
     static struct option long_options[] = {
         {"help", no_argument, 0, 'h'},
-        {"project_id", required_argument, 0, 'p'},
+        {"project_id", optional_argument, 0, 'p'},
          {"host_ip", required_argument, 0, 'i'},
         {"device_path", required_argument, 0, 'd'},
         {"publish_topic", required_argument, 0, 't'},
@@ -93,7 +93,7 @@ int iotc_parse(int argc, char** argv, char* valid_options,
 
     switch (c) {
       case 'p':
-        iotc_project_id = optarg;
+        iotc_subscription_id = optarg;
         break;
       case 'i':
         iotc_host = optarg;
