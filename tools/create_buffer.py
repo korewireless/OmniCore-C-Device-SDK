@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2023 KoreWireless
+# Copyright 2023 KORE Wireless
 #
 # This is part of the Omnicore SDK for Embedded C.
 # It is licensed under the BSD 3-Clause license; you may not use this file
@@ -50,7 +50,7 @@ def tabs_2_spaces(s):
 
 h_pro = tabs_2_spaces(
     """\
-/* Copyright 2023 KoreWireless
+/* Copyright 2023 KORE Wireless
  *
  * This is part of the Omnicore Device SDK for Embedded C.
  * It is licensed under the BSD 3-Clause license; you may not use this file

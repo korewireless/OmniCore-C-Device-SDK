@@ -1,6 +1,6 @@
 # Omnicore SDK for Embedded C Porting Guide
 
-##### Copyright 2023 KoreWireless
+##### Copyright 2023 KORE Wireless
 
 ## Table of Contents
 1. [Introduction](#introduction)

@@ -1,6 +1,6 @@
 # Omnicore Embedded C User Guide
 
-##### Copyright 2023 KoreWireless
+##### Copyright 2023 KORE Wireless
 
 This document explains how applications can use the Omnicore IoT Device SDK for Embedded C to connect to Omnicore . It also describes the security and communication features of the Device SDK.
 

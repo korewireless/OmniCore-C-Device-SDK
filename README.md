@@ -131,7 +131,7 @@ Review the following documentation:
 
 ## License
 
-Copyright 2023 KoreWireless
+Copyright 2023 KORE Wireless
 
 Licensed under the BSD 3-Clause license.
 
