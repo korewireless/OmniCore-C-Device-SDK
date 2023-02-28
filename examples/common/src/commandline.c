@@ -73,7 +73,7 @@ int iotc_parse(int argc, char** argv, char* valid_options,
     static struct option long_options[] = {
         {"help", no_argument, 0, 'h'},
         {"project_id", optional_argument, 0, 'p'},
-         {"host_ip", required_argument, 0, 'i'},
+         {"host_name", required_argument, 0, 'i'},
         {"device_path", required_argument, 0, 'd'},
         {"publish_topic", required_argument, 0, 't'},
         {"publish_message", required_argument, 0, 'm'},
@@ -156,7 +156,7 @@ void iotc_usage(const char* options, unsigned options_length) {
         break;
       case 'i':
         printf(
-            "-i --host_ip\n\tProvide the host ip of  your subscription is "
+            "-i --host_name\n\tProvide the host name of  your subscription is "
             "registered in "
             "Omnicore.\n");
         break;
