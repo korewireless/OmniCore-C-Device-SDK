@@ -29,6 +29,7 @@
  * limitations under the License.
  */
 
+
 #ifndef __IOTC_ROOTCA_LIST_H__
 #define __IOTC_ROOTCA_LIST_H__
 
@@ -37,10 +38,10 @@ extern "C" {
 #endif
 
 #ifndef IOTC_ROOTCA_LIST_BYTE_LENGTH
-#define IOTC_ROOTCA_LIST_BYTE_LENGTH 1389
+#define IOTC_ROOTCA_LIST_BYTE_LENGTH 1236
 #endif /* IOTC_ROOTCA_LIST_BYTE_LENGTH */
 
-extern unsigned char iotc_RootCA_list[IOTC_ROOTCA_LIST_BYTE_LENGTH];
+extern unsigned char iotc_RootCA_list[ IOTC_ROOTCA_LIST_BYTE_LENGTH ];
 
 #ifdef __cplusplus
 }
