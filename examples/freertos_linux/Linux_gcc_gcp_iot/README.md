@@ -20,7 +20,7 @@ make
 3. Run the following command to connect to Cloud IoT Core and issue a `PUBLISH` message every five seconds.
 
 <pre>
-./Linux_gcc_gcp_iot -p <i><b>PROJECT_ID</b></i> -d projects/<i><b>PROJECT_ID</b></i>/locations/<i><b>REGION</b></i>/registries/<i><b>REGISTRY_ID</b></i>/devices/<i><b>DEVICE_ID</b></i> -t /devices/<i><b>DEVICE_ID</b></i>/state
+./Linux_gcc_gcp_iot -p <i><b>PROJECT_ID</b></i> -d projects/<i><b>PROJECT_ID</b></i>/locations/<i><b>REGION</b></i>/registries/<i><b>REGISTRY_ID</b></i>/devices/<i><b>DEVICE_ID</b></i> -t /REGISTRY_ID/<i><b>DEVICE_ID</b></i>/state
 </pre>
 
 ## Troubleshooting

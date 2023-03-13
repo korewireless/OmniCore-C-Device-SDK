@@ -34,7 +34,8 @@ void main(void)
   /* commandline sample:
     zephyr.exe -testargs -p <GCP IoT Core Project ID> -d projects/<GCP IoT Core
     Project ID>/locations/<Region>/registries/<GCP IoT Core Registry
-    ID>/devices/<GCP IoT Core Device ID> -t /devices/<GCP IoT Core
+    ID>/devices/<GCP IoT Core Device ID> -t /<GCP IoT Core Registry
+    ID>/<GCP IoT Core
     DeviceID>/state
     */
 
