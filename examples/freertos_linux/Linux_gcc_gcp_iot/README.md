@@ -1,6 +1,6 @@
 # FreeRTOS example
 
-This example uses the Google Cloud IoT Device SDK for Embedded C to connect a FreeRTOS application to the [Google Cloud IoT Core MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
+This example uses the Google Cloud IoT Device SDK for Embedded C to connect a FreeRTOS application to the [Google OmniCore MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
 
 ## Getting started
 
@@ -17,7 +17,7 @@ cd examples/freertos_linux/Linux_gcc_gcp_iot \
 make
 ```
 
-3. Run the following command to connect to Cloud IoT Core and issue a `PUBLISH` message every five seconds.
+3. Run the following command to connect to OmniCore and issue a `PUBLISH` message every five seconds.
 
 <pre>
 ./Linux_gcc_gcp_iot -p <i><b>PROJECT_ID</b></i> -d projects/<i><b>PROJECT_ID</b></i>/locations/<i><b>REGION</b></i>/registries/<i><b>REGISTRY_ID</b></i>/devices/<i><b>DEVICE_ID</b></i> -t /REGISTRY_ID/<i><b>DEVICE_ID</b></i>/state
@@ -25,6 +25,6 @@ make
 
 ## Troubleshooting
 
-### Validating Cloud IoT Core credentials
+### Validating OmniCore credentials
 
-Build the MQTT client example to validate your Cloud IoT Core credentials.
+Build the MQTT client example to validate your OmniCore credentials.

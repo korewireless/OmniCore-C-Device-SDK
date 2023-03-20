@@ -46,12 +46,12 @@ extern "C"
 #endif
 
     /*! \file
-     * @brief Connects to and communicates with Cloud IoT Core
+     * @brief Connects to and communicates with OmniCore
      * @mainpage Overview
      *
      * @details The Cloud IoT device SDK for embedded C is a library of source files
      * for securely connecting to and communicating with
-     * <a href="https://cloud.google.com/iot-core/">Cloud IoT Core</a>. The SDK is
+     * <a href="https://cloud.google.com/iot-core/">OmniCore</a>. The SDK is
      * designed for embedded IoT devices,
      * <a href="../../../user_guide.md#feature-overview">so the SDK</a>:
      *
@@ -106,9 +106,9 @@ extern "C"
      * ## Creating and managing MQTT connections
      * | Function | Description |
      * | --- | --- |
-     * | iotc_connect() | Connects to Cloud IoT Core. |
+     * | iotc_connect() | Connects to OmniCore. |
      * | iotc_connect_to() | Connects to a custom MQTT broker endpoint. |
-     * | iotc_create_iotcore_jwt() | Creates a JSON Web Token for authenticating to Cloud IoT Core. |
+     * | iotc_create_iotcore_jwt() | Creates a JSON Web Token for authenticating to OmniCore. |
      * | iotc_shutdown_connection() | Disconnects asynchronously from an MQTT broker. |
      *
      * ## Sending and receiving messages
@@ -140,11 +140,11 @@ extern "C"
      * The repository has example client applications for connecting:
      *
      * - <a href="../../../../examples/iot_core_mqtt_client">Native Linux</a>
-     * devices to Cloud IoT Core
+     * devices to OmniCore
      * - <a href="../../../../examples/zephyr_native_posix">Zephyr <code>native_posix</code></a>
-     * boards to Cloud IoT Core
+     * boards to OmniCore
      * - <a href="../../../../examples/freertos_linux/Linux_gcc_gcp_iot">FreeRTOS</a>
-     * platforms to Cloud IoT Core
+     * platforms to OmniCore
      */
 
     /* -----------------------------------------------------------------------
@@ -189,11 +189,11 @@ extern "C"
 
     /**
      * @brief Checks if a context is
-     * {@link iotc_connect() connected to Cloud IoT Core}.
+     * {@link iotc_connect() connected to OmniCore}.
      *
      * @param [in] context_handle The handle for which to determine the connection.
      *
-     * @retval 1 The context is connected to Cloud IoT Core.
+     * @retval 1 The context is connected to OmniCore.
      * @retval 0 The context is invalid or the connection is either uninitialized,
      *     connecting, closing, or closed.
      */
@@ -236,16 +236,16 @@ extern "C"
     extern void iotc_events_stop();
 
     /**
-     * @brief Connects to Cloud IoT Core.
+     * @brief Connects to OmniCore.
      *
      * @param [in] iotc_h A {@link iotc_create_context() context handle}.
-     * @param [in] username The MQTT username. Cloud IoT Core ignores this
+     * @param [in] username The MQTT username. OmniCore ignores this
      *     parameter, but some platforms will not send the password field unless the
      *     username field is specified. For best results, supply an arbitrary
      *     username like "unused" or "ignored."
-     * @param [in] password The MQTT password. Cloud IoT Core requires a
+     * @param [in] password The MQTT password. OmniCore requires a
      *     {@link iotc_create_iotcore_jwt() JWT}.
-     * @param [in] client_id The MQTT client ID. Cloud IoT Core requires a
+     * @param [in] client_id The MQTT client ID. OmniCore requires a
      *     <a href="https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#configuring_mqtt_clients">
      *     device path</a>.
      * @param [in] connection_timeout The number of seconds to wait for an MQTT

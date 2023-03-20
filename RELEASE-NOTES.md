@@ -5,7 +5,7 @@
 - Added Hostip Parameter in Examples
 - Changed Roots.pem
 
-# Google Cloud IoT Core Device SDK for Embedded C version  1.0.3
+# Google OmniCore Device SDK for Embedded C version  1.0.3
 #### April 28, 2021
 
 - Updated the POSIX BSP to use `open` instead of `fopen` for more consistent error detection, [#100](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/pull/100) by [@pnfisher](https://github.com/pnfisher).
@@ -15,7 +15,7 @@
 - Fixes to links within the User Guide, [#102](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/pull/102) by [@mikevoyt](https://github.com/mikevoyt).
 - Thank you to all of our contributors!
 
-# Google Cloud IoT Core Device SDK for Embedded C version  1.0.2
+# Google OmniCore Device SDK for Embedded C version  1.0.2
 #### February 4, 2020
 
 - Wildcard topic name support in MQTT subscriptions, [#89](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/pull/89) by [@sheindel](https://github.com/sheindel), thank you!
@@ -24,7 +24,7 @@
 - Improvements on the 'make' build system (wolfssl fixes, addressing rebuild
   issues).
 
-# Google Cloud IoT Core Device SDK for Embedded C version  1.0.1
+# Google OmniCore Device SDK for Embedded C version  1.0.1
 #### April 8, 2019
 
 - The TLS Board Support Package (BSP) reference implementation for mbedTLS has been updated to use deterministic ECDSA signatures.
@@ -49,7 +49,7 @@
   - Added the function `iotc_bsp_time_getmonotonictime_milliseconds`.
   - See `include/bsp/iotc_time.h` for more information about these changes.
 
-# Google Cloud IoT Core Device SDK for Embedded C version  1.0
+# Google OmniCore Device SDK for Embedded C version  1.0
 #### February 22, 2019
 
 - Added FreeRTOS example. See `examples/freertos_linux/Linux_gcc_gcp_iot/README.md` for more information.
@@ -60,16 +60,16 @@
 
 - Connection API Changes:
   - JWT creation and formation was added to a new header file `include/iotc_jwt.h`.
-  - `iotc_connect` and `iotc_connect_to` now take the standard MQTT connect credentials of username, password, and client_id.  A JWT, formatted according to [Cloud IoT Core specifications](https://cloud.google.com/iot/docs/how-tos/credentials/jwts), should be passed as the MQTT password when connecting to Cloud IoT Core.
+  - `iotc_connect` and `iotc_connect_to` now take the standard MQTT connect credentials of username, password, and client_id.  A JWT, formatted according to [OmniCore specifications](https://cloud.google.com/iot/docs/how-tos/credentials/jwts), should be passed as the MQTT password when connecting to OmniCore.
   - For more information, see the Device SDK [API](https://googlecloudplatform.github.io/iot-device-sdk-embedded-c/api/html/index.html) or [BSP](https://googlecloudplatform.github.io/iot-device-sdk-embedded-c/bsp/html/index.html) reference.
 
-# Google Cloud IoT Core Device SDK for Embedded C version 0.7
+# Google OmniCore Device SDK for Embedded C version 0.7
 #### October 1, 2018
 
-The initial release of the Cloud IoT Core Device SDK for Embedded C.  The SDK connects embedded devices to Google Cloud IoT Core via MQTT.
+The initial release of the OmniCore Device SDK for Embedded C.  The SDK connects embedded devices to Google OmniCore via MQTT.
 
 The SDK uses a Board Support Package (BSP) architecture to compartmentalize device-specific code.  This modular approach aids in the porting process. Engineers only need to customize a few files to port the Device SDK to their device. A reference BSP implementation is provided for POSIX systems and two reference TLS implementations are provided for use with either the mbedTLS or wolfSSL embedded libraries. TLS implementations are required for both TLS connectivity and for private-key JWT signatures. JWTs serve as client authentication tokens when connecting to Google Clout IoT Core.
 
-For more documentation on the process of porting the SDK to your embedded device, or for using another TLS library, please see the README.md and the /doc/porting_guide.md documents. For more information about Google Cloud IoT Core, please visit: https://cloud.google.com/iot-core.
+For more documentation on the process of porting the SDK to your embedded device, or for using another TLS library, please see the README.md and the /doc/porting_guide.md documents. For more information about Google OmniCore, please visit: https://cloud.google.com/iot-core.
 
 The Device SDK is developed on Ubuntu Linux with GNU Make.

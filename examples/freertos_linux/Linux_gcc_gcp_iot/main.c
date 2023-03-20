@@ -88,7 +88,7 @@ void task_function_gcpiot_embedded_c(void *parameters)
 {
   const size_t task_delay = (size_t)parameters;
 
-  printf("Starting GCP IoT Embedded C Client...\n");
+  printf("Starting OmniCore Embedded C Client...\n");
 
   iotc_initialize();
 
@@ -172,7 +172,7 @@ int main(int argc, char *argv[])
 
   printf("Example for FreeRTOS Linux port.\n");
 
-  /* parsing GCP IoT related command line arguments */
+  /* parsing Omnicore related command line arguments */
   if (0 != iotc_example_handle_command_line_args(argc, argv))
   {
     return -1;

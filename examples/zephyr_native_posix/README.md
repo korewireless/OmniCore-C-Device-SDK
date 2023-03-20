@@ -1,6 +1,6 @@
 # Zephyr RTOS example
 
-This example uses the Google Cloud IoT Device SDK for Embedded C to connect a Zephyr native_posix board application to the [Google Cloud IoT Core MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
+This example uses the Google Cloud IoT Device SDK for Embedded C to connect a Zephyr native_posix board application to the [Google OmniCore MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
 
 ## Getting started
 Follow the steps below to connect the Zephyr application to the MQTT bridge.
@@ -16,7 +16,7 @@ cd examples/zephyr_native_posix/build \
 make
 ```
 
-3. Run the following command to connect to Cloud IoT Core and issue a `PUBLISH` message every five seconds.
+3. Run the following command to connect to OmniCore and issue a `PUBLISH` message every five seconds.
 
 <pre>
 zephyr/zephyr.exe -testargs -p <i><b>PROJECT_ID</b></i> -d projects/<i><b>PROJECT_ID</b></i>/locations/<i><b>REGION</b></i>/registries/<i><b>REGISTRY_ID</b></i>/devices/<i><b>DEVICE_ID</b></i> -t /REGISTRY_ID/<i><b>DEVICE_ID</b></i>/state
@@ -45,6 +45,6 @@ Read the following references to start the `zeth` virtual network adapter and co
 
 Another way to set environment variables is by permanently set up the Zephyr environment in your terminal. To permanently install the Zephyr environment, follow the instructions on [Set up a development system](https://docs.zephyrproject.org/latest/getting_started/index.html#set-up-a-development-system).
 
-### Validating Cloud IoT Core credentials
+### Validating OmniCore credentials
 
-Build the [MQTT client example](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/tree/docs_updates/examples/iot_core_mqtt_client) to validate your Cloud IoT Core credentials.
+Build the [MQTT client example](https://github.com/GoogleCloudPlatform/iot-device-sdk-embedded-c/tree/docs_updates/examples/iot_core_mqtt_client) to validate your OmniCore credentials.

@@ -30,8 +30,8 @@
  */
 
 /*
- * This example application connects to the GCP IoT Core Service with
- * a credentials you mus specify on the command line.   It then publishes
+ * This example application connects to the OmniCore Service with
+ * a credentials you must specify on the command line.   It then publishes
  * test messages to a topic that you also must specify.
  *
  * Run the example with the flag --help for more information.
@@ -54,7 +54,7 @@ iotc_context_handle_t iotc_context = IOTC_INVALID_CONTEXT_HANDLE;
     The main entry point for this example binary.
 
     For information on creating the credentials required for your device to the
-    GCP IoT Core Service during development then please see the service's
+    OmniCore Service during development then please see the service's
     quick start guide. */
 
 int main(int argc, char *argv[])
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
       ec_private_key_pem;
 
   /* Initialize iotc library and create a context to use to connect to the
-   * GCP IoT Core Service. */
+   * OmniCore Service. */
   const iotc_state_t error_init = iotc_initialize();
 
   if (IOTC_STATE_OK != error_init)

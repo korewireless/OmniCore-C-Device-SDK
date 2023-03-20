@@ -35,11 +35,12 @@
 #include <iotc_types.h>
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /*! \file
- * @brief Creates JSON Web Tokens for authenticating to Cloud IoT Core.
+ * @brief Creates JSON Web Tokens for authenticating to OmniCore.
  */
 
 /** The size, in bytes, of the JWT header. */
@@ -65,24 +66,24 @@ extern "C" {
   (IOTC_JWT_HEADER_BUF_SIZE_BASE64 + 1 + IOTC_JWT_PAYLOAD_BUF_SIZE_BASE64 + \
    1 + IOTC_JWT_MAX_SIGNATURE_SIZE_BASE64)
 
-/**
- * @brief Creates a JWT for authenticating to Cloud IoT Core.
- *
- * @param [in] expiration_period_sec The number of seconds before this JWT
- *     expires.
- * @param [in] project_id The GCP project ID.
- * @param [in] private_key_data ES256 private key data.
- * @param [in,out] dst_jwt_buf A pointer to a buffer that stores a formatted and
- *     signed JWT.
- * @param [in] dst_jwt_buf_len The length, in bytes, of the buffer to which
- *     dst_jwt_buf points.
- * @param [out] bytes_written The number of bytes written to the buffer to which
- *     dst_jwt_buf points.
- */
-iotc_state_t iotc_create_iotcore_jwt(
-    const char* project_id, uint32_t expiration_period_sec,
-    const iotc_crypto_key_data_t* private_key_data, char* dst_jwt_buf,
-    size_t dst_jwt_buf_len, size_t* bytes_written);
+  /**
+   * @brief Creates a JWT for authenticating to OmniCore.
+   *
+   * @param [in] expiration_period_sec The number of seconds before this JWT
+   *     expires.
+   * @param [in] project_id The GCP project ID.
+   * @param [in] private_key_data ES256 private key data.
+   * @param [in,out] dst_jwt_buf A pointer to a buffer that stores a formatted and
+   *     signed JWT.
+   * @param [in] dst_jwt_buf_len The length, in bytes, of the buffer to which
+   *     dst_jwt_buf points.
+   * @param [out] bytes_written The number of bytes written to the buffer to which
+   *     dst_jwt_buf points.
+   */
+  iotc_state_t iotc_create_iotcore_jwt(
+      const char *project_id, uint32_t expiration_period_sec,
+      const iotc_crypto_key_data_t *private_key_data, char *dst_jwt_buf,
+      size_t dst_jwt_buf_len, size_t *bytes_written);
 
 #ifdef __cplusplus
 }

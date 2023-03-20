@@ -32,10 +32,10 @@ void main(void)
   printk("Example for Zephyr port.\n");
 
   /* commandline sample:
-    zephyr.exe -testargs -p <GCP IoT Core Project ID> -d projects/<GCP IoT Core
-    Project ID>/locations/<Region>/registries/<GCP IoT Core Registry
-    ID>/devices/<GCP IoT Core Device ID> -t /<GCP IoT Core Registry
-    ID>/<GCP IoT Core
+    zephyr.exe -testargs -p <OmniCore Project ID> -d projects/<OmniCore
+    Project ID>/locations/<Region>/registries/<OmniCore  Registry
+    ID>/devices/<OmniCore  Device ID> -t /<OmniCore  Registry
+    ID>/<OmniCore
     DeviceID>/state
     */
 
@@ -52,7 +52,7 @@ void main(void)
     ++argv;
   }
 
-  /* parsing GCP IoT related command line arguments */
+  /* parsing OmniCore related command line arguments */
   if (0 != iotc_example_handle_command_line_args(argc, argv))
   {
     return;
@@ -75,7 +75,7 @@ void main(void)
   iotc_connect_private_key_data.crypto_key_union.key_pem.key =
       ec_private_key_pem;
 
-  printk("Starting GCP IoT Embedded C Client...\n");
+  printk("Starting OmniCore Embedded C Client...\n");
 
   iotc_initialize();
 

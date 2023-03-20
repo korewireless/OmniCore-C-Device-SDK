@@ -6,7 +6,7 @@ This document explains how applications can use the Omnicore IoT Device SDK for 
 
 For a complete API reference and code samples, see the following directories in the [Omnicore IoT Device SDK for Embedded C GitHub repository](https://github.com/korewireless/Omnicore-C-Device-SDK).
 
- * `examples/`: Includes an example of how to connect and then publish/subscribe to Cloud IoT Core MQTT topics
+ * `examples/`: Includes an example of how to connect and then publish/subscribe to OmniCore MQTT topics
 
 
 The first part of this user guide summarizes features and requirements. If you're ready to start using the Device SDK, review the [Typical client application workflow](#typical-client-application-workflow).
@@ -60,14 +60,14 @@ The footprint also includes a TLS adaptation layer but doesn't include a TLS imp
 
 ### MQTT v3.1.1
 
-The Device SDK communicates over publish/subscribe topics with MQTT. The Device SDK connects a TCP socket to the [Cloud IoT Core MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge). The Device SDK then requests subscriptions to one or many topics via the socket. After the Device SDK subscribes to a topic, all incoming data is published to the client application on the embedded device. 
+The Device SDK communicates over publish/subscribe topics with MQTT. The Device SDK connects a TCP socket to the [OmniCore MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge). The Device SDK then requests subscriptions to one or many topics via the socket. After the Device SDK subscribes to a topic, all incoming data is published to the client application on the embedded device. 
 
-Similarly, devices can publish to one or many topics in order to perform outgoing communication with Cloud IoT Core. The device doesn't need to keep track of numerous connections, report connection state, or broadcast messages to multiple addresses. Instead, the device simply publishes a message to a topic. Cloud IoT Core automatically routes the message to the associated [subscriptions](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Provision/create-regs-devices). Because routing and permissions are handled in the cloud, the Device SDK reduces communication overhead on the device.
+Similarly, devices can publish to one or many topics in order to perform outgoing communication with OmniCore. The device doesn't need to keep track of numerous connections, report connection state, or broadcast messages to multiple addresses. Instead, the device simply publishes a message to a topic. OmniCore automatically routes the message to the associated [subscriptions](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Provision/create-regs-devices). Because routing and permissions are handled in the cloud, the Device SDK reduces communication overhead on the device.
 
 * The MQTT specification defines three Quality of Service (QoS) [levels](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge#quality_of_service_qos).
 
     * **QoS 0 (AT\_MOST\_ONCE)**: The published message is sent to the broker. No response is sent to the client, so the client has no way to confirm receipt and the message might not be delivered at all.
-    * **QoS 1 (AT\_LEAST\_ONCE)**: When the message is delivered to Cloud IoT Core, a "receipt" is sent to the client. The message may be sent multiple times before it is acknowledged by the service.
+    * **QoS 1 (AT\_LEAST\_ONCE)**: When the message is delivered to OmniCore, a "receipt" is sent to the client. The message may be sent multiple times before it is acknowledged by the service.
     * **QoS 2 (EXACTLY\_ONCE)**: Includes acknowledgment as in QoS 1, but the message is guaranteed to reach the target only once.
 
 Note: Omnicore IoT Core does not support QoS 2. Visit the [MQTT Standard v3.1.1 Reference](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html) for more information about the MQTT protocol.
@@ -101,7 +101,7 @@ The Device SDK includes a backoff system that monitors connection state on the c
     * Repeated connection issues will increase the penalty over time, up to a max of approximately 15 minutes.
     * Some randomness is added to each delay calculation in order to distribute connection attempts across a fleet of devices.
 
-Backoff penalties don't affect devices that have successfully connected to Cloud IoT Core.
+Backoff penalties don't affect devices that have successfully connected to OmniCore.
 
 ### Memory limiter
 
@@ -135,7 +135,7 @@ By default, this memory space is set to 2 KB. For example, if you run `iotc_maxi
 
 ## Platform security requirements
 
-The Device SDK requires TLS v1.2 to securely connect to Cloud IoT Core. In addition, the embedded device must include all of the following components.
+The Device SDK requires TLS v1.2 to securely connect to OmniCore. In addition, the embedded device must include all of the following components.
 
 ### True random number generator
 
@@ -145,9 +145,9 @@ A true random number generator ensures that the nonce created during TLS handsha
 
 ### Accurate real-time clock
 
-The embedded device must keep time in order to perform the following security processes when it initially connects with Cloud IoT Core.
+The embedded device must keep time in order to perform the following security processes when it initially connects with OmniCore.
 
-* To [authenticate to Cloud IoT Core](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Connect/Managing%20Credentials/using-jwts), connecting clients create a signed JSON Web Token (JWT) that includes the current date/time. The JWT is valid for one day and must be regenerated with the accurate time on subsequent connections.
+* To [authenticate to OmniCore](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Connect/Managing%20Credentials/using-jwts), connecting clients create a signed JSON Web Token (JWT) that includes the current date/time. The JWT is valid for one day and must be regenerated with the accurate time on subsequent connections.
 * The TLS implementation on the device checks the service's identifying certificate during TLS handshaking: the current date/time must be within the certificate's date/time validity range. If the date is outside the range, the TLS handshake is aborted and the device doesn't connect.
 
 ## TLS implementation requirements
@@ -158,7 +158,7 @@ If you want to use a TLS library other than [mbedTLS](https://tls.mbed.org) or [
 
 The TLS implementation must accept a series of root CA certificates stored on the Device SDK to determine whether the server certificate (provided at TLS handshaking) has been signed by one of the root CAs. The TLS implementation must meet the following requirements to validate the server certificate.
    * The root certificates are provided in the `res/trusted_RootCA_certs/roots.pem` file.
-   * The `make` process automatically moves this file from `res/trusted_RootCA_certs/roots.pem` to the correct location in the current working directory. To maintain a secure connection with Cloud IoT Core, we strongly recommend that you perform frequent security-related firmware updates.
+   * The `make` process automatically moves this file from `res/trusted_RootCA_certs/roots.pem` to the correct location in the current working directory. To maintain a secure connection with OmniCore, we strongly recommend that you perform frequent security-related firmware updates.
    * Requires an accurate clock.
 
 ### Server domain checking
@@ -181,25 +181,25 @@ Note: this section provides an overview rather than complete details. For more i
 
 ### Provisioning credentials
 
-Before you begin building a client application, [generate device credentials](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Connect/Managing%20Credentials/create-key-pairs) with Cloud IoT Core. Make sure that the following information is available:
+Before you begin building a client application, [generate device credentials](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Connect/Managing%20Credentials/create-key-pairs) with OmniCore. Make sure that the following information is available:
 
  - project ID
  - [device path](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge)
  - private key (e.g., `./ec_private.pem`)
 
-The Device SDK uses the context to authenticate your client application to Cloud IoT Core.
+The Device SDK uses the context to authenticate your client application to OmniCore.
 
 ### Step 1: Create a context
 
-A Device SDK context represents a socket connection with the Cloud IoT Core service.
+A Device SDK context represents a socket connection with the OmniCore service.
 
-To create a context, call **`iotc_create_context()`** without any parameters. The Device SDK returns a list of parameters for your client application. Execute the function with these parameters to provision the credentials to your client application. Then, follow the instructions below to pass the context to the **`iotc_connect()`** function and connect to Cloud IoT Core.
+To create a context, call **`iotc_create_context()`** without any parameters. The Device SDK returns a list of parameters for your client application. Execute the function with these parameters to provision the credentials to your client application. Then, follow the instructions below to pass the context to the **`iotc_connect()`** function and connect to OmniCore.
 
 ### Step 2: Connect
 
-To connect to Cloud IoT Core, call **`iotc_connect()`**. This function enqueues an event that requests a socket connection with Cloud IoT Core. The event is processed in the subsequent tick of the Device SDK's event processor. Executing the **`iotc_connect()`** function initiates the following operations.
+To connect to OmniCore, call **`iotc_connect()`**. This function enqueues an event that requests a socket connection with OmniCore. The event is processed in the subsequent tick of the Device SDK's event processor. Executing the **`iotc_connect()`** function initiates the following operations.
 
-* Domain name resolution of the Cloud IoT Core service
+* Domain name resolution of the OmniCore service
 * Building the TCP/IP socket connection
 * TLS handshaking and certificate validation
 * MQTT credential handshaking
@@ -208,7 +208,7 @@ Note: the call to connect returns immediately. The connection operation is fulfi
 
 #### Connect callback
 
-When the **`iotc_connect()`** function runs, the Device SDK initalizes a callback function. The callback function is invoked when a connection to Cloud IoT Core is established or when the connection is unsuccessful. The callback function is also invoked when an established connection is lost or shut down. See [Step 6: Disconnect and Shut Down](#step-6-disconnect-and-shut-down) for details.
+When the **`iotc_connect()`** function runs, the Device SDK initalizes a callback function. The callback function is invoked when a connection to OmniCore is established or when the connection is unsuccessful. The callback function is also invoked when an established connection is lost or shut down. See [Step 6: Disconnect and Shut Down](#step-6-disconnect-and-shut-down) for details.
 
 ### Step 3: Process events
 
@@ -222,7 +222,7 @@ There is no limit of the number of topics an application can subscribe to. Howev
 
 #### Subscription callback
 
-The Device SDK invokes a subscription callback function when Cloud IoT Core acknowledges an outgoing subscription request or when the Device SDK recieves an incoming message on a subscribed topic.
+The Device SDK invokes a subscription callback function when OmniCore acknowledges an outgoing subscription request or when the Device SDK recieves an incoming message on a subscribed topic.
 
 Incoming messages include the topic data as part of the callback parameters. Specify a callback function for each subscription. You can either use the same subscription callback function for multiple topics, or have a unique callback function for each topic your client application subscribes to.
 
@@ -234,7 +234,7 @@ The QoS level also affects the Device SDK's memory overhead. QoS 2 messages use 
 
 ### Step 5: Publish
 
-Once the embedded device is connected to Cloud IoT Core, the client application can publish messages.
+Once the embedded device is connected to OmniCore, the client application can publish messages.
 
 To publish a message to a topic, run **`iotc_publish()`** or **`iotc_publish_data()`** functions. Each message must include the following parameters.
 
@@ -244,13 +244,13 @@ To publish a message to a topic, run **`iotc_publish()`** or **`iotc_publish_dat
 
 #### Publish callback
 
-The client application can also supply a function pointer to a publish callback. This callback function is optional; it notifies client applications when messages are sent from the client, the messages are acknowledged by Cloud IoT Core and the Device SDK deletes buffered data.
+The client application can also supply a function pointer to a publish callback. This callback function is optional; it notifies client applications when messages are sent from the client, the messages are acknowledged by OmniCore and the Device SDK deletes buffered data.
 
 This callback function is for environments with severe memory restrictions. For example, the callback function helps gate pending publications and helps track the status of large messages in order to free up resources after the messages are published.
 
 ### Step 6: Disconnect and shut down
 
-To disconnect from Cloud IoT Core, invoke the **`iotc_shutdown_connection()`** function. This function enqueues an event that cleanly closes the socket connection. After the connection is terminated, the Device SDK invokes the [connect callback](#step-2-connect) function.
+To disconnect from OmniCore, invoke the **`iotc_shutdown_connection()`** function. This function enqueues an event that cleanly closes the socket connection. After the connection is terminated, the Device SDK invokes the [connect callback](#step-2-connect) function.
 
 Note: Do not delete the context until the the connect callback is invoked.
 
@@ -268,7 +268,7 @@ To free memory after intentionally disconnecting a device, invoke the **`iotc_de
 
 If memory needs to be freed after an intentional disconnection, the context can be cleaned up by invoking **`iotc_delete_context`**. Further memory can be freed by calling **`iotc_shutdown()`**, but only after all contexts have been deleted.
 
-Don't call the **`iotc_shutdown()`** function on every disconnection event because **`iotc_shutdown()`** destroys the backoff status cache that guards Cloud IoT Core from accidental DDoS attacks by devices fleets. For more information, see [Backoff](#backoff).
+Don't call the **`iotc_shutdown()`** function on every disconnection event because **`iotc_shutdown()`** destroys the backoff status cache that guards OmniCore from accidental DDoS attacks by devices fleets. For more information, see [Backoff](#backoff).
 
 Note: In blocking mode, stop the event loop in the disconnection callback and then delete the context. In a ticking event loop, delete the context in the next tick after disconnecting.
 
@@ -301,7 +301,7 @@ Cast this as `iotc_connection_data_t*` and observe the `connection_state` to det
 
 * **IOTC_CONNECTION_STATE_OPENED:** The connection successfully opened and TLS handshaking occurred.
 * **IOTC_CONNECTION_STATE_OPEN_FAILED:** The connection failed. The state parameter is set to an `iotc_err` that explains why the connection failed.
-* **IOTC_CONNECTION_STATE_CLOSED:** A previously opened connection was shut down. If the state parameter is `IOTC_STATE_OK`, the disruption was due to the client application queuing a shutdown request via `iotc_shutdown_connection()`. Otherwise, the connection was closed either because of a network interruption or because the Cloud IoT Core service encountered errant client behavior or an expired JWT.
+* **IOTC_CONNECTION_STATE_CLOSED:** A previously opened connection was shut down. If the state parameter is `IOTC_STATE_OK`, the disruption was due to the client application queuing a shutdown request via `iotc_shutdown_connection()`. Otherwise, the connection was closed either because of a network interruption or because the OmniCore service encountered errant client behavior or an expired JWT.
 
 **`state`**
 
@@ -309,7 +309,7 @@ IOTC_CONNECTION_STATE_CLOSED messages use this parameter when the device was int
 
 ### Subscription callback
 
-The subscription callback is invoked when Cloud IoT Core sends a MQTT SUBACK response with the granted QoS level of the subscription request. This function is also invoked each time Cloud IoT Core delivers a message to the subscribed topic.
+The subscription callback is invoked when OmniCore sends a MQTT SUBACK response with the granted QoS level of the subscription request. This function is also invoked each time OmniCore delivers a message to the subscribed topic.
 
 #### Function signature
 
@@ -332,7 +332,7 @@ Tracks the state of the ongoing connection and queues new events from within the
 Indicates the reason for invoking the function. Possible responses are listed below.
 
 * **IOTC_SUB_CALL_SUBACK:** The callback provides a status update of subscription process.
-* **IOTC_SUB_CALL_MESSAGE:** The callback invocation carries the payload data of the message sent by Cloud IoT Core.
+* **IOTC_SUB_CALL_MESSAGE:** The callback invocation carries the payload data of the message sent by OmniCore.
 * **IOTC_SUB_CALL_UNKNOWN:** Signifies a serious issue; data might be corrupted. Report an error but do not take other action.
 
 
@@ -378,7 +378,7 @@ Tip: This data can contain application-specific information or it can differenti
 
 ### Publication callback
 
-The publication callback is invoked when the Device SDK successfully publishes to Cloud IoT Core. This callback helps devices with low memory capacity gate the publication rate. The publication callback accepts a `void* data` variable that you may use to mark the specific publication that this callback is tracking.
+The publication callback is invoked when the Device SDK successfully publishes to OmniCore. This callback helps devices with low memory capacity gate the publication rate. The publication callback accepts a `void* data` variable that you may use to mark the specific publication that this callback is tracking.
 
 #### Function signature
 
@@ -465,7 +465,7 @@ if( IOTC_INVALID_TIMED_TASK_HANDLE != timed_task_handle )
 
 #### Sample usage
 
-Visit the `examples/` directory for an sample implementation of a scheduled callback. The sample connects to Cloud IoT Core, schedules a callback to `delayed_publish()`, and then publishes a message every five seconds.
+Visit the `examples/` directory for an sample implementation of a scheduled callback. The sample connects to OmniCore, schedules a callback to `delayed_publish()`, and then publishes a message every five seconds.
 
 ## Additional resources
 
@@ -476,7 +476,7 @@ The following documentation is also available:
 * [Device SDK releases](https://github.com/korewireless/Omnicore-C-Device-SDK/releases)
 * [Device SDK GitHub](https://github.com/korewireless/Omnicore-C-Device-SDK)
 * [Device SDK porting guide]https://github.com/korewireless/Omnicore-C-Device-SDK/blob/master/doc/porting_guide.md)
-* [Cloud IoT Core quickstart](https://docs.omnicore.cloud.korewireless.com/docs/introt)
+* [OmniCore quickstart](https://docs.omnicore.cloud.korewireless.com/docs/introt)
 
 ### External resources
 
@@ -501,8 +501,8 @@ A state in which the Device SDK delays connection attempts to prevent accidental
 
 ### Client application
 
-Software written for the target platform. Resides above the Device SDK for Embedded C on the application software stack. The client application calls into the Omnicore IoT Device SDK for Embedded C to fulfill Cloud IoT Core communication requests.
+Software written for the target platform. Resides above the Device SDK for Embedded C on the application software stack. The client application calls into the Omnicore IoT Device SDK for Embedded C to fulfill OmniCore communication requests.
 
 ### Omnicore Cloud IoT Device SDK for Embedded C
 
-Software written in C and intended for embedded devices. The Device SDK connects client applications to Cloud IoT Core.
+Software written in C and intended for embedded devices. The Device SDK connects client applications to OmniCore.

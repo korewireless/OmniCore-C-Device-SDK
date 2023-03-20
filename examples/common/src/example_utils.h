@@ -37,7 +37,7 @@
  * topic are require to be passed as command line arguments. Prints
  * notification if either of these is not found.
  */
-int iotc_example_handle_command_line_args(int argc, char* argv[]);
+int iotc_example_handle_command_line_args(int argc, char *argv[]);
 
 /* Attempts to load the client's identifying private key from disk so that the
    byte data may be passed to the 'iotc_connect function'.  Please note that the
@@ -45,7 +45,7 @@ int iotc_example_handle_command_line_args(int argc, char* argv[]);
    This example assumes the use of one that must be provided to a TLS
    implementation in a buffer, but secure chips with slot-based key stores can
    also be used. Please see the Crypto BSP for more information. */
-int load_ec_private_key_pem_from_posix_fs(char* buf_ec_private_key_pem,
+int load_ec_private_key_pem_from_posix_fs(char *buf_ec_private_key_pem,
                                           size_t buf_len);
 
 /* A callback function that will be invoked whenever the connection state
@@ -64,7 +64,7 @@ int load_ec_private_key_pem_from_posix_fs(char* buf_ec_private_key_pem,
     IOTC_CONNECTION_STATE_OPEN_FAILED - there was an error in the connection
         process and the connection could not be made. You can determine the
         reason in the iotc_state_t, which contains a standard IoTC error code.
-    IOTC_CONNECTION_STATE_CLOSED - disconnected from Google Cloud IoT Core
+    IOTC_CONNECTION_STATE_CLOSED - disconnected from Google OmniCore
    service, with the reason provided in iotc_state_t. Note: there are two
    possible reasons of being disconnected: a) the application initiated the
    disconnection procedure through a call to iotc_shutdown_connection b) there
@@ -85,11 +85,11 @@ int load_ec_private_key_pem_from_posix_fs(char* buf_ec_private_key_pem,
             exists.  If an unforeseen disconnection occurs, or if the connection
             fails, then the application reattempts the connection.  */
 void on_connection_state_changed(iotc_context_handle_t in_context_handle,
-                                 void* data, iotc_state_t state);
+                                 void *data, iotc_state_t state);
 
 /* A function that publishes to the topic that was specified in the command
    line parameters of the application. This is invoked directly upon connect
    in the 'on_connection_state_changed' function, but also by the IoTC Client's
    event system on a 5 second interval. */
 void publish_function(iotc_context_handle_t context_handle,
-                      iotc_timed_task_handle_t timed_task, void* user_data);
+                      iotc_timed_task_handle_t timed_task, void *user_data);

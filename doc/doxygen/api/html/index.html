@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">Overview </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The Cloud IoT device SDK for embedded C is a library of source files for securely connecting to and communicating with <a href="https://cloud.google.com/iot-core/">Cloud IoT Core</a>. The SDK is designed for embedded IoT devices, <a href="../../../user_guide.md#feature-overview">so the SDK</a>:</p>
+<div class="textblock"><p>The Cloud IoT device SDK for embedded C is a library of source files for securely connecting to and communicating with <a href="https://cloud.google.com/iot-core/">OmniCore</a>. The SDK is designed for embedded IoT devices, <a href="../../../user_guide.md#feature-overview">so the SDK</a>:</p>
 <ul>
 <li>Communicates over MQTT v3.1.1 with TLS.</li>
 <li>Publishes and subscribes asychronously.</li>
@@ -141,18 +141,18 @@ $(document).ready(function(){initNavTree('index.html','');});
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#a18b8276f88ce6816e67c1c1b23edd534" title="Frees the provided context.">iotc_delete_context()</a>  </td><td class="markdownTableBodyNone">Deletes and frees the provided context.   </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#a51e7d4bc247d4c598bbac21853f9124c" title="Checks if a context is connected to Cloud IoT Core.">iotc_is_context_connected()</a>  </td><td class="markdownTableBodyNone">Checks if a context is <a class="el" href="d9/d22/iotc_8h.html#a48ab2dda7fedc71942119642f5b0e9c2">connected to an MQTT broker</a>.   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#a51e7d4bc247d4c598bbac21853f9124c" title="Checks if a context is connected to OmniCore.">iotc_is_context_connected()</a>  </td><td class="markdownTableBodyNone">Checks if a context is <a class="el" href="d9/d22/iotc_8h.html#a48ab2dda7fedc71942119642f5b0e9c2">connected to an MQTT broker</a>.   </td></tr>
 </table>
 <h2>Creating and managing MQTT connections</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Function  </th><th class="markdownTableHeadNone">Description   </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#a48ab2dda7fedc71942119642f5b0e9c2" title="Connects to Cloud IoT Core.">iotc_connect()</a>  </td><td class="markdownTableBodyNone">Connects to Cloud IoT Core.   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#a48ab2dda7fedc71942119642f5b0e9c2" title="Connects to OmniCore.">iotc_connect()</a>  </td><td class="markdownTableBodyNone">Connects to OmniCore.   </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#a42c951dc7534f8e90075a38c77c77fa7" title="Connects to a custom MQTT broker endpoint.">iotc_connect_to()</a>  </td><td class="markdownTableBodyNone">Connects to a custom MQTT broker endpoint.   </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="d8/df1/iotc__jwt_8h.html#af6e4cdf9d89a98a916b8584a03c03e4e" title="Creates a JWT for authenticating to Cloud IoT Core.">iotc_create_iotcore_jwt()</a>  </td><td class="markdownTableBodyNone">Creates a JSON Web Token for authenticating to Cloud IoT Core.   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="d8/df1/iotc__jwt_8h.html#af6e4cdf9d89a98a916b8584a03c03e4e" title="Creates a JWT for authenticating to OmniCore.">iotc_create_iotcore_jwt()</a>  </td><td class="markdownTableBodyNone">Creates a JSON Web Token for authenticating to OmniCore.   </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="d9/d22/iotc_8h.html#ada03683c17e3cf3c5ed286e040140dc9" title="Disconnects asynchronously from an MQTT broker.">iotc_shutdown_connection()</a>  </td><td class="markdownTableBodyNone">Disconnects asynchronously from an MQTT broker.   </td></tr>
 </table>
@@ -188,9 +188,9 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h1>Example MQTT clients</h1>
 <p>The repository has example client applications for connecting:</p>
 <ul>
-<li><a href="../../../../examples/iot_core_mqtt_client">Native Linux</a> devices to Cloud IoT Core</li>
-<li><a href="../../../../examples/zephyr_native_posix">Zephyr <code>native_posix</code></a> boards to Cloud IoT Core</li>
-<li><a href="../../../../examples/freertos_linux/Linux_gcc_gcp_iot">FreeRTOS</a> platforms to Cloud IoT Core </li>
+<li><a href="../../../../examples/iot_core_mqtt_client">Native Linux</a> devices to OmniCore</li>
+<li><a href="../../../../examples/zephyr_native_posix">Zephyr <code>native_posix</code></a> boards to OmniCore</li>
+<li><a href="../../../../examples/freertos_linux/Linux_gcc_gcp_iot">FreeRTOS</a> platforms to OmniCore </li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

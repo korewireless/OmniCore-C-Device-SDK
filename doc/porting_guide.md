@@ -131,13 +131,13 @@ The file system flag is for reading public root CAs for service authentication d
                          caps on the available amount of memory. Additionally,
                          a memory monitor tracks memory leaks while testing.  If [`posix_platform`](#platform-selector-flags) is defined, then the Device SDK also logs a stack trace of the initial allocation.
    - `mqtt_localhost`    - Instructs the Device SDK's MQTT client to connect
-                         to a localhost MQTT server instead of the [Cloud IoT Core MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge).
+                         to a localhost MQTT server instead of the [OmniCore MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge).
    - `no_certverify`     - Disables TLS certificate verification of the
                          service's identifying cert to reduce security. For development purposes only.
    - `tls_bsp`           - Instructs the Device SDK's MQTT client to use
                          third-party TLS 1.2 implementations to encrypt data before sending it over network sockets.
    - `tls_socket`        - Counterpart of `tls_bsp`. Prevents the MQTT client
-                         from including a TLS layer that invokes a TLS BSP. This increases network security. Note that the [Cloud IoT Core MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge) will not accept connections without TLS.
+                         from including a TLS layer that invokes a TLS BSP. This increases network security. Note that the [OmniCore MQTT bridge](https://docs.omnicore.cloud.korewireless.com/docs/Guides/Message/publish-mqtt-bridge) will not accept connections without TLS.
 
 #### Platform selector flag
 
@@ -154,7 +154,7 @@ For more information about threadsafe callback support, see the user guide in `d
 
 Application binaries and sources are in the `examples/` directory.
 
-These examples use the Device SDK to connect to Omnicore IoT Core, subscribe to Cloud Pub/Sub topics, publish information to Cloud IoT Core, and receive data from Cloud IoT Core.
+These examples use the Device SDK to connect to Omnicore IoT Core, subscribe to Cloud Pub/Sub topics, publish information to OmniCore, and receive data from OmniCore.
 
 The examples' source code shows you how to initialize and use the Device SDK's C API.  For more information about the C API, consult the comments in the [example code](https://github.com/korewireless/Omnicore-C-Device-SDK/examples), [`README.md`](../README.md), [`doc/user_guide.md`](user_guide.md).
 To build the examples follow the [instructions in the main `README.md`](https://github.com/korewireless/Omnicore-C-Device-SDK/#building-the-examples).
