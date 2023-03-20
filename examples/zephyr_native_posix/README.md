@@ -1,6 +1,6 @@
 # Zephyr RTOS example
 
-This example uses the Google Cloud IoT Device SDK for Embedded C to connect a Zephyr native_posix board application to the [Google OmniCore MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
+This example uses the Google Cloud IoT Device SDK for Embedded C to connect a Zephyr native_posix board application to the [OmniCore MQTT bridge](https://cloud.google.com/iot/docs/how-tos/mqtt-bridge#iot-core-mqtt-auth-run-cpp).
 
 ## Getting started
 Follow the steps below to connect the Zephyr application to the MQTT bridge.

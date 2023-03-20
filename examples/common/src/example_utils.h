@@ -64,7 +64,7 @@ int load_ec_private_key_pem_from_posix_fs(char *buf_ec_private_key_pem,
     IOTC_CONNECTION_STATE_OPEN_FAILED - there was an error in the connection
         process and the connection could not be made. You can determine the
         reason in the iotc_state_t, which contains a standard IoTC error code.
-    IOTC_CONNECTION_STATE_CLOSED - disconnected from Google OmniCore
+    IOTC_CONNECTION_STATE_CLOSED - disconnected from OmniCore
    service, with the reason provided in iotc_state_t. Note: there are two
    possible reasons of being disconnected: a) the application initiated the
    disconnection procedure through a call to iotc_shutdown_connection b) there
